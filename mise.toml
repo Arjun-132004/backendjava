@@ -1,0 +1,7 @@
+[tasks.ci]
+run = "gradle build --no-daemon jacocoTestReport sonar"
+
+[tools]
+gradle = "9"
+java = "26"
+sonar-scanner-cli = "8"

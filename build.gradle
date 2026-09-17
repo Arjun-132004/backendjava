@@ -1,0 +1,65 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot'
+	id 'io.spring.dependency-management'
+	id 'com.diffplug.spotless'
+	id 'jacoco'
+	id 'org.sonarqube'
+}
+
+group = 'io.okami101'
+version = '0.0.1-SNAPSHOT'
+
+java {
+	sourceCompatibility = '21'
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	implementation 'org.springframework.boot:spring-boot-starter-security'
+	implementation 'org.springframework.boot:spring-boot-starter-validation'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.flywaydb:flyway-database-postgresql'
+	implementation 'org.springdoc:springdoc-openapi-starter-common:_'
+	implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:_'
+	implementation 'io.jsonwebtoken:jjwt-api:_'
+	implementation 'com.github.slugify:slugify:_'
+	implementation 'net.datafaker:datafaker:_'
+
+	compileOnly 'org.projectlombok:lombok'
+	developmentOnly 'org.springframework.boot:spring-boot-devtools'
+	
+	runtimeOnly 'org.postgresql:postgresql'
+	runtimeOnly 'io.jsonwebtoken:jjwt-impl:_'
+	runtimeOnly 'io.jsonwebtoken:jjwt-jackson:_'
+
+	annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
+	annotationProcessor 'org.projectlombok:lombok'
+
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testImplementation 'org.springframework.restdocs:spring-restdocs-mockmvc'
+	testImplementation 'org.springframework.security:spring-security-test'
+	testImplementation 'io.rest-assured:rest-assured:_'
+	testImplementation 'io.rest-assured:json-path:_'
+	testImplementation 'io.rest-assured:xml-path:_'
+}
+
+test {
+	useJUnitPlatform()
+}
+
+jacocoTestReport {
+	reports {
+		xml.required.set(true)
+	}
+}
+
+spotless {
+	java {
+		googleJavaFormat()
+	}
+}
