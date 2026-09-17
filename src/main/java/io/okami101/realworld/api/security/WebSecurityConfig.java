@@ -35,7 +35,7 @@ public class WebSecurityConfig {
 
     if (h2ConsoleEnabled) {
       http.authorizeHttpRequests(
-              auth -> auth.requestMatchers("/h2-console", "/h2-console/**").permitAll())
+              auth -> auth.requestMatchers("/health").permitAll().requestMatchers("/h2-console", "/h2-console/**").permitAll())
           .headers(headers -> headers.frameOptions(frame -> frame.sameOrigin()));
     }
 
