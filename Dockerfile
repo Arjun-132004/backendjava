@@ -27,7 +27,7 @@ RUN set -eu; mkdir -p /out; \
     cp "$jar" /out/app.jar
 
 # --- Runtime: JRE only, non-root ---
-FROM eclipse-temurin:21-jre
+FROM eclipse-temurin:22-jre
 WORKDIR /app
 COPY --from=builder /out/app.jar /app/app.jar
 # Numeric USER — runAsNonRoot rejects names (see PYTHON template note).
